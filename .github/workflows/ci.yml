@@ -12,7 +12,7 @@ jobs:
       with:
           submodules: true
     - name: install SFML
-      run: sudo apt-get install libsfml-dev
+      run: sudo apt-get -y install libsfml-dev
     - name: configure
       run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=debug ..
     - name: build
