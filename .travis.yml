@@ -31,10 +31,10 @@ matrix:
     
 
 before_install:
+  - sudo apt-get -y install libsfml-dev
   - eval "${MATRIX_EVAL}"
   - PARENTDIR=$(pwd)
   - mkdir $PARENTDIR/build
-  - sudo apt-get -y install libsfml-dev
 
 install: 
   - cd $PARENTDIR/build
