@@ -9,27 +9,30 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "exampleConfig.h"
-#include "example.h"
+#include <SFML/Graphics.hpp>
 
 /*
- * Simple main program that demontrates how access
- * CMake definitions (here the version number) from source code.
+ * Simple SFML main.
  */
 int main() {
-  std::cout << "C++ Boiler Plate v"
-            << PROJECT_VERSION_MAJOR
-            << "."
-            << PROJECT_VERSION_MINOR
-            << "."
-            << PROJECT_VERSION_PATCH
-            << "."
-            << PROJECT_VERSION_TWEAK
-            << std::endl;
-  std::system("cat ../LICENSE");
 
-  // Bring in the dummy class from the example source,
-  // just to show that it is accessible from main.cpp.
-  Dummy d = Dummy();
-  return d.doSomething() ? 0 : -1;
+  sf::RenderWindow window(sf::VideoMode(200, 200), "SFML Works !");
+  sf::CircleShape shape(100.f);
+  shape.setFillColor(sf::Color::Green);
+
+  while (window.isOpen())
+    {
+      sf::Event event;
+      while (window.pollEvent(event))
+	{
+	  if (event.type == sf::Event::Closed)
+	    window.close();
+	}
+
+      window.clear();
+      window.draw(shape);
+      window.display();
+    }
+  
+  return 0;
 }

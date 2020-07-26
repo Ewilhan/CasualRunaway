@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 3.8.2)
 # Set project name, version and laguages here. (change as needed)
 # Version numbers are available by including "exampleConfig.h" in 
 # the source. See exampleConfig.h.in for some more details.
-project(CPP_BOILERPLATE VERSION 1.2.3.4 LANGUAGES CXX)
+project(CASUALRUNAWAY VERSION 0.0.0.0 LANGUAGES CXX)
 
 
 # Options: Things you can set via commandline options to cmake (e.g. -DENABLE_LTO=[ON|OFF])
@@ -56,6 +56,10 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 # There's also (probably) doctests within the library, so we need to see this as well.
 target_link_libraries(${LIBRARY_NAME} PUBLIC doctest)
+
+# Linking SFML
+find_package(SFML 2.5 COMPONENTS graphics audio network REQUIRED)
+target_link_libraries(${LIBRARY_NAME} PUBLIC sfml-graphics sfml-audio sfml-network) 
 
 # Set the compile options you want (change as needed).
 target_set_warnings(${LIBRARY_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying)
