@@ -34,7 +34,7 @@ before_install:
   - eval "${MATRIX_EVAL}"
   - PARENTDIR=$(pwd)
   - mkdir $PARENTDIR/build
-  - sudo apt-get install libsfml-dev
+  - sudo apt-get -y install libsfml-dev
 
 install: 
   - cd $PARENTDIR/build
