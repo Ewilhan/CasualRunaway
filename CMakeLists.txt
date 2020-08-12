@@ -51,7 +51,8 @@ set(LIBRARY_NAME engine)  # Default name for the library built from src/*.cpp (c
 # Compile all sources into a library.
 
 if (WIN32)
-  set(SFML_DIR "${PROJECT_SOURCE_DIR}/external/SFML_win64")
+  set(SFML_DIR "${PROJECT_SOURCE_DIR}/external/SFML_win64/lib/cmake/SFML")
+  message(STATUS, ${SFML_DIR})
 endif(WIN32)
 
 add_library(${LIBRARY_NAME} OBJECT ${SOURCES})
@@ -63,8 +64,11 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(${LIBRARY_NAME} PUBLIC doctest)
 
 # Linking SFML
-find_package(SFML 2.5 COMPONENTS graphics audio network REQUIRED)
+find_package(SFML 2.5.1 COMPONENTS graphics audio network REQUIRED)
 target_link_libraries(${LIBRARY_NAME} PUBLIC sfml-graphics sfml-audio sfml-network) 
+if (WIN32)
+  target_link_libraries(${LIBRARY_NAME} PUBLIC ${SFML_DEPEDENCIES})
+endif (WIN32)
 
 # Set the compile options you want (change as needed).
 target_set_warnings(${LIBRARY_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying)
