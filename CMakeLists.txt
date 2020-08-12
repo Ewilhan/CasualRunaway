@@ -64,7 +64,7 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(${LIBRARY_NAME} PUBLIC doctest)
 
 # Linking SFML
-find_package(SFML 2.5 COMPONENTS graphics audio network REQUIRED)
+find_package(SFML 2.5.1 COMPONENTS graphics audio network REQUIRED)
 target_link_libraries(${LIBRARY_NAME} PUBLIC sfml-graphics sfml-audio sfml-network) 
 
 # Set the compile options you want (change as needed).
