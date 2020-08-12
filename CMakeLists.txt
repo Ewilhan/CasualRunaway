@@ -52,6 +52,7 @@ set(LIBRARY_NAME engine)  # Default name for the library built from src/*.cpp (c
 
 if (WIN32)
   set(SFML_DIR "${PROJECT_SOURCE_DIR}/external/SFML_win64/lib/cmake/SFML")
+  message(STATUS, ${SFML_DIR})
 endif(WIN32)
 
 add_library(${LIBRARY_NAME} OBJECT ${SOURCES})
