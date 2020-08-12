@@ -66,6 +66,9 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC doctest)
 # Linking SFML
 find_package(SFML 2.5.1 COMPONENTS graphics audio network REQUIRED)
 target_link_libraries(${LIBRARY_NAME} PUBLIC sfml-graphics sfml-audio sfml-network) 
+if (WIN32)
+  target_link_libraries(${LIBRARY_NAME} PUBLIC ${SFML_DEPEDENCIES})
+endif (WIN32)
 
 # Set the compile options you want (change as needed).
 target_set_warnings(${LIBRARY_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying)
