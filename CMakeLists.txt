@@ -49,6 +49,11 @@ set(LIBRARY_NAME engine)  # Default name for the library built from src/*.cpp (c
 #                            Build! (Change as needed)
 # --------------------------------------------------------------------------------
 # Compile all sources into a library.
+
+if (WIN32)
+  set(SFML_DIR "${PROJECT_SOURCE_DIR}/external/SFML_win64")
+endif(WIN32)
+
 add_library(${LIBRARY_NAME} OBJECT ${SOURCES})
 
 # Lib needs its header files, and users of the library must also see these (PUBLIC). (No change needed)
